@@ -1,3 +1,4 @@
+console.log("script.js yüklendi");
 // Firebase yapılandırması
 const firebaseConfig = {
   apiKey: "AIzaSyAEeT_n4S6OZW1OEKArUNumxv7bFJjv9s8",
@@ -55,4 +56,5 @@ function logout() {
     document.getElementById("panel").style.display = "none";
   });
 }
+
 
