@@ -1,0 +1,48 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/img"
+public_folder: "/img"
+
+collections:
+  - name: "posts"
+    label: "Blog Yazıları"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Başlık", name: "title", widget: "string" }
+      - { label: "Tarih", name: "date", widget: "datetime" }
+      - { label: "Kapak Görseli", name: "thumbnail", widget: "image" }
+      - { label: "İçerik", name: "body", widget: "markdown" }
+
+  - name: "gallery"
+    label: "Galeri"
+    folder: "content/gallery"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Başlık", name: "title", widget: "string" }
+      - { label: "Açıklama", name: "description", widget: "text" }
+      - { label: "Görsel", name: "image", widget: "image" }
+
+  - name: "home"
+    label: "Ana Sayfa"
+    files:
+      - label: "Ana Sayfa İçeriği"
+        name: "home"
+        file: "content/home.md"
+        fields:
+          - { label: "Başlık", name: "title", widget: "string" }
+          - { label: "Giriş Metni", name: "intro", widget: "text" }
+
+  - name: "theme"
+    label: "Tema Ayarları"
+    files:
+      - label: "Tema"
+        name: "theme"
+        file: "content/theme.md"
+        fields:
+          - { label: "Ana Renk", name: "mainColor", widget: "string" }
+          - { label: "Yazı Tipi", name: "font", widget: "string" }
