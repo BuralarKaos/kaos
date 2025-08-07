@@ -1,7 +1,4 @@
-// Firebase SDK'ları yüklendiğini varsayıyoruz:
-// Bu dosya index.html ile birlikte çalışır
-
-// 1. Firebase yapılandırması – KENDİ PROJENE AİT
+// Firebase yapılandırması
 const firebaseConfig = {
   apiKey: "AIzaSyAEeT_n4S6OZW1OEKArUNumxv7bFJjv9s8",
   authDomain: "kaos-css.firebaseapp.com",
@@ -12,45 +9,44 @@ const firebaseConfig = {
   measurementId: "G-WZNK864NMT"
 };
 
-// 2. Firebase'i başlat
+// Firebase'i başlat
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-// 3. Giriş yap
-function login() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  auth.signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      alert("Giriş başarılı! Hoş geldin.");
-      document.getElementById("auth").style.display = "none";
-      document.getElementById("panel").style.display = "block";
-    })
-    .catch((error) => {
-      alert("Hatalı giriş: " + error.message);
-    });
-}
-
-// 4. Kayıt ol
+// Kayıt ol
 function register() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
   auth.createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      alert("Kayıt başarılı. Giriş yapabilirsiniz.");
+    .then(() => {
+      alert("Kayıt başarılı!");
     })
     .catch((error) => {
       alert("Kayıt hatası: " + error.message);
     });
 }
 
-// 5. Çıkış yap
-function logout() {
-  auth.signOut()
+// Giriş yap
+function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  auth.signInWithEmailAndPassword(email, password)
     .then(() => {
-      document.getElementById("auth").style.display = "block";
-      document.getElementById("panel").style.display = "none";
+      alert("Giriş başarılı!");
+      document.getElementById("auth").style.display = "none";
+      document.getElementById("panel").style.display = "block";
+    })
+    .catch((error) => {
+      alert("Giriş hatası: " + error.message);
     });
+}
+
+// Çıkış yap
+function logout() {
+  auth.signOut().then(() => {
+    document.getElementById("auth").style.display = "block";
+    document.getElementById("panel").style.display = "none";
+  });
 }
