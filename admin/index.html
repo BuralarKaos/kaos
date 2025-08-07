@@ -4,10 +4,6 @@
   <meta charset="UTF-8" />
   <title>Kaos Admin Panel</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js"></script>
 </head>
 <body>
   <h1>KAOS Admin Panel</h1>
@@ -24,8 +20,12 @@
     <button onclick="logout()">Çıkış Yap</button>
   </div>
 
-  <script src="./script.js" defer></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js"></script>
+
+  <!-- Kendi script'in en sonda ve defer OLMADAN -->
+  <script src="./script.js"></script>
 </body>
 </html>
-
-
