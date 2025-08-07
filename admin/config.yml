@@ -8,10 +8,10 @@ public_folder: "/assets/images/uploads"
 collections:
   - name: "yazilar"
     label: "Yazılar"
-    folder: "posts"
+    folder: "yazilar"
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Başlık", name: "title", widget: "string"}
-      - {label: "Tarih", name: "date", widget: "datetime"}
-      - {label: "İçerik", name: "body", widget: "markdown"}
+      - { label: "Başlık", name: "title", widget: "string" }
+      - { label: "Tarih", name: "date", widget: "datetime" }
+      - { label: "İçerik", name: "body", widget: "markdown" }
