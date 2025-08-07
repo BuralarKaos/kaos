@@ -15,5 +15,3 @@ collections:
       - { label: "Başlık", name: "title", widget: "string" }
       - { label: "Tarih", name: "date", widget: "datetime" }
       - { label: "İçerik", name: "body", widget: "markdown" }
-
-
