@@ -18,14 +18,19 @@ function register() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
+  console.log("Kayıt denemesi başlatılıyor:", email);
+
   auth.createUserWithEmailAndPassword(email, password)
-    .then(() => {
-      alert("Kayıt başarılı!");
+    .then((userCredential) => {
+      console.log("Kayıt başarılı:", userCredential.user);
+      alert("Kayıt başarılı. Giriş yapabilirsiniz.");
     })
     .catch((error) => {
+      console.error("Kayıt hatası:", error);
       alert("Kayıt hatası: " + error.message);
     });
 }
+
 
 // Giriş yap
 function login() {
@@ -50,3 +55,4 @@ function logout() {
     document.getElementById("panel").style.display = "none";
   });
 }
+
