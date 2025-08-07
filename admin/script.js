@@ -1,4 +1,7 @@
-// 1. Firebase config – BURAYA KENDİ PROJENE AİT BİLGİLERİ YAZ
+// Firebase SDK'ları yüklendiğini varsayıyoruz:
+// Bu dosya index.html ile birlikte çalışır
+
+// 1. Firebase yapılandırması – KENDİ PROJENE AİT
 const firebaseConfig = {
   apiKey: "AIzaSyAEeT_n4S6OZW1OEKArUNumxv7bFJjv9s8",
   authDomain: "kaos-css.firebaseapp.com",
@@ -9,23 +12,23 @@ const firebaseConfig = {
   measurementId: "G-WZNK864NMT"
 };
 
-// 2. Firebase başlat
+// 2. Firebase'i başlat
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-// 3. Kullanıcı giriş
+// 3. Giriş yap
 function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
   auth.signInWithEmailAndPassword(email, password)
-    .then(user => {
-      alert("Giriş başarılı");
+    .then((userCredential) => {
+      alert("Giriş başarılı! Hoş geldin.");
       document.getElementById("auth").style.display = "none";
       document.getElementById("panel").style.display = "block";
     })
-    .catch(error => {
-      alert("Giriş başarısız: " + error.message);
+    .catch((error) => {
+      alert("Hatalı giriş: " + error.message);
     });
 }
 
@@ -35,18 +38,19 @@ function register() {
   const password = document.getElementById("password").value;
 
   auth.createUserWithEmailAndPassword(email, password)
-    .then(user => {
+    .then((userCredential) => {
       alert("Kayıt başarılı. Giriş yapabilirsiniz.");
     })
-    .catch(error => {
-      alert("Kayıt başarısız: " + error.message);
+    .catch((error) => {
+      alert("Kayıt hatası: " + error.message);
     });
 }
 
 // 5. Çıkış yap
 function logout() {
-  auth.signOut().then(() => {
-    document.getElementById("panel").style.display = "none";
-    document.getElementById("auth").style.display = "block";
-  });
+  auth.signOut()
+    .then(() => {
+      document.getElementById("auth").style.display = "block";
+      document.getElementById("panel").style.display = "none";
+    });
 }
