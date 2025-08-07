@@ -1,13 +1,10 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Admin Paneli</title>
-  </head>
+  <head><meta charset="utf-8" /><title>Admin Paneli</title></head>
   <body>
     <script>
       const hash = window.location.hash;
-      if (hash.includes('recovery_token') || hash.includes('invite_token')) {
+      if (hash.includes('invite_token') || hash.includes('recovery_token')) {
         const token = hash.replace(/^#\/?/, '');
         window.location.replace(`/admin/#${token}`);
       }
