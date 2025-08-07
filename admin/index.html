@@ -6,13 +6,12 @@
   </head>
   <body>
     <script>
-      // Recovery token yönlendirmesi
-      if (window.location.hash.includes('recovery_token')) {
-        const token = window.location.hash.replace('#/recovery_token=', '');
-        window.location.href = `/admin/#invite_token=${token}`;
+      const hash = window.location.hash;
+      if (hash.includes('recovery_token') || hash.includes('invite_token')) {
+        const token = hash.replace(/^#\/?/, '');
+        window.location.replace(`/admin/#${token}`);
       }
     </script>
-
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   </body>
 </html>
